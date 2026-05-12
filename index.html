@@ -1,0 +1,1652 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STRONGWEAR — Kaos & Baju Pria Premium</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,600;1,9..40,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f2ee;
+    --red: #c13b2a;
+    --red-dark: #8f2318;
+    --gray: #1e1e1e;
+    --gray-mid: #3a3a3a;
+    --gray-light: #8a8a8a;
+    --cream: #e8e3da;
+    --accent: #d4a843;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'Space Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── NOISE TEXTURE OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* ─── UTILITY ─── */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  .tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--red);
+    border: 1px solid var(--red);
+    padding: 4px 12px;
+    margin-bottom: 20px;
+  }
+
+  /* ─── TOPBAR ─── */
+  .topbar {
+    background: var(--red);
+    padding: 10px 0;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    position: relative;
+    overflow: hidden;
+  }
+  .topbar-scroll {
+    display: inline-block;
+    animation: marquee 20s linear infinite;
+    white-space: nowrap;
+  }
+  @keyframes marquee {
+    0% { transform: translateX(100vw); }
+    100% { transform: translateX(-100%); }
+  }
+
+  /* ─── NAVBAR ─── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--gray-mid);
+    padding: 16px 0;
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .logo {
+    font-family: var(--font-display);
+    font-size: 28px;
+    letter-spacing: 0.05em;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .logo span { color: var(--red); }
+  .nav-cta {
+    background: var(--red);
+    color: var(--white);
+    padding: 10px 24px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+  .nav-cta:hover { background: var(--red-dark); transform: translateY(-1px); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 92vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 60px;
+    padding: 80px 0 60px;
+    position: relative;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    right: -200px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(193,59,42,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray-light);
+    margin-bottom: 16px;
+  }
+  .hero-headline {
+    font-family: var(--font-display);
+    font-size: clamp(64px, 8vw, 110px);
+    line-height: 0.92;
+    letter-spacing: 0.01em;
+    margin-bottom: 28px;
+  }
+  .hero-headline .line-accent { color: var(--red); display: block; }
+  .hero-sub {
+    font-size: 18px;
+    font-weight: 300;
+    color: #b0ab9e;
+    line-height: 1.7;
+    max-width: 440px;
+    margin-bottom: 40px;
+  }
+  .hero-sub strong { color: var(--white); font-weight: 600; }
+  .hero-cta-group { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+  .btn-primary {
+    background: var(--red);
+    color: var(--white);
+    padding: 16px 36px;
+    font-family: var(--font-display);
+    font-size: 20px;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    transition: all 0.25s;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--white);
+    transform: translateX(-101%);
+    transition: transform 0.25s;
+  }
+  .btn-primary:hover::after { transform: translateX(0); }
+  .btn-primary:hover { color: var(--red); }
+  .btn-primary span { position: relative; z-index: 1; }
+  .btn-ghost {
+    border: 1px solid var(--gray-mid);
+    color: var(--gray-light);
+    padding: 16px 28px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-ghost:hover { border-color: var(--white); color: var(--white); }
+  .hero-stats {
+    display: flex;
+    gap: 32px;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--gray-mid);
+  }
+  .stat-item { }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 36px;
+    color: var(--white);
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--gray-light);
+    text-transform: uppercase;
+  }
+  .hero-visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-img-box {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--gray);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--gray-mid);
+  }
+  .hero-img-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .img-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: var(--gray-light);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .img-placeholder-icon {
+    width: 60px;
+    height: 60px;
+    border: 2px dashed var(--gray-mid);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-badge {
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    background: var(--red);
+    padding: 16px 20px;
+    font-family: var(--font-display);
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+  }
+
+  /* ─── OPENING / MASALAH ─── */
+  .section-opening {
+    padding: 100px 0;
+    background: var(--gray);
+    position: relative;
+  }
+  .section-opening::before {
+    content: 'MASALAH';
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    font-family: var(--font-display);
+    font-size: 120px;
+    color: rgba(255,255,255,0.03);
+    letter-spacing: 0.05em;
+    pointer-events: none;
+  }
+  .opening-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .opening-left h2 {
+    font-family: var(--font-display);
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 0.95;
+    margin-bottom: 24px;
+    letter-spacing: 0.02em;
+  }
+  .opening-left h2 em {
+    color: var(--red);
+    font-style: normal;
+    display: block;
+  }
+  .opening-left p {
+    color: #a0a0a0;
+    font-size: 17px;
+    line-height: 1.75;
+  }
+  .pain-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .pain-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px;
+    background: var(--black);
+    border-left: 3px solid var(--gray-mid);
+    transition: border-color 0.2s;
+  }
+  .pain-list li:hover { border-color: var(--red); }
+  .pain-num {
+    font-family: var(--font-display);
+    font-size: 32px;
+    color: var(--gray-mid);
+    line-height: 1;
+    min-width: 36px;
+  }
+  .pain-text { font-size: 15px; color: #c0c0c0; line-height: 1.6; }
+  .pain-text strong { color: var(--white); display: block; margin-bottom: 4px; font-size: 16px; }
+
+  /* ─── BENEFIT ─── */
+  .section-benefit {
+    padding: 100px 0;
+    background: var(--black);
+    position: relative;
+  }
+  .section-header {
+    margin-bottom: 60px;
+    max-width: 600px;
+  }
+  .section-header h2 {
+    font-family: var(--font-display);
+    font-size: clamp(44px, 5.5vw, 72px);
+    line-height: 0.93;
+    letter-spacing: 0.02em;
+    margin-bottom: 16px;
+  }
+  .section-header p {
+    color: var(--gray-light);
+    font-size: 16px;
+  }
+  .benefit-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--gray-mid);
+    border: 1px solid var(--gray-mid);
+  }
+  .benefit-card {
+    background: var(--black);
+    padding: 36px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+  .benefit-card:hover { background: #111; }
+  .benefit-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--red);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .benefit-card:hover::before { transform: scaleX(1); }
+  .benefit-num {
+    font-family: var(--font-display);
+    font-size: 56px;
+    color: rgba(193,59,42,0.15);
+    line-height: 1;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .benefit-icon {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .benefit-icon svg { width: 20px; height: 20px; stroke: var(--red); fill: none; }
+  .benefit-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+  }
+  .benefit-desc { font-size: 14px; color: #888; line-height: 1.65; }
+
+  /* ─── ALASAN / WHY US ─── */
+  .section-why {
+    padding: 100px 0;
+    background: var(--cream);
+    color: var(--black);
+  }
+  .section-why .tag { border-color: var(--black); color: var(--black); }
+  .section-why .section-header h2 { color: var(--black); }
+  .section-why .section-header p { color: #555; }
+  .why-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .why-visual-stack { position: relative; }
+  .why-img-main {
+    width: 100%;
+    aspect-ratio: 4/5;
+    background: var(--gray);
+    border: 1px solid #ccc;
+    position: relative;
+    overflow: hidden;
+  }
+  .why-img-thumb {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 160px;
+    aspect-ratio: 1;
+    background: var(--red);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+  }
+  .why-img-thumb-num {
+    font-family: var(--font-display);
+    font-size: 40px;
+    line-height: 1;
+    display: block;
+  }
+  .why-img-thumb-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+  .why-reasons { display: flex; flex-direction: column; gap: 0; }
+  .why-reason {
+    padding: 24px 0;
+    border-bottom: 1px solid #d0ccc7;
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 20px;
+    align-items: start;
+    cursor: pointer;
+  }
+  .why-reason:first-child { border-top: 1px solid #d0ccc7; }
+  .why-reason-num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--red);
+    padding-top: 2px;
+  }
+  .why-reason-body {}
+  .why-reason-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    letter-spacing: 0.03em;
+    margin-bottom: 8px;
+    color: var(--black);
+  }
+  .why-reason-desc {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.65;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, opacity 0.3s;
+    opacity: 0;
+  }
+  .why-reason.open .why-reason-desc { max-height: 200px; opacity: 1; }
+  .why-reason-arrow {
+    display: inline-block;
+    font-size: 18px;
+    color: var(--red);
+    transition: transform 0.3s;
+    float: right;
+  }
+  .why-reason.open .why-reason-arrow { transform: rotate(90deg); }
+
+  /* ─── TESTIMONI ─── */
+  .section-testi {
+    padding: 100px 0;
+    background: var(--black);
+    overflow: hidden;
+  }
+  .testi-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .testi-nav { display: flex; gap: 8px; }
+  .testi-btn {
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--gray-mid);
+    background: transparent;
+    color: var(--white);
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+  .testi-btn:hover { background: var(--red); border-color: var(--red); }
+  .testi-track-wrap { overflow: hidden; }
+  .testi-track {
+    display: flex;
+    gap: 24px;
+    transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+  }
+  .testi-card {
+    flex: 0 0 calc(33.333% - 16px);
+    background: var(--gray);
+    padding: 36px;
+    border: 1px solid var(--gray-mid);
+    position: relative;
+  }
+  .testi-quote-mark {
+    font-family: var(--font-display);
+    font-size: 80px;
+    color: var(--red);
+    line-height: 0.6;
+    display: block;
+    margin-bottom: 16px;
+  }
+  .testi-text {
+    font-size: 15px;
+    color: #b0a99e;
+    line-height: 1.7;
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+  .testi-author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .testi-avatar {
+    width: 44px;
+    height: 44px;
+    background: var(--gray-mid);
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 18px;
+    color: var(--red);
+  }
+  .testi-name {
+    font-family: var(--font-display);
+    font-size: 18px;
+    letter-spacing: 0.04em;
+    display: block;
+  }
+  .testi-loc {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--gray-light);
+    text-transform: uppercase;
+  }
+  .testi-stars {
+    position: absolute;
+    top: 28px;
+    right: 28px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 2px;
+  }
+
+  /* ─── URGENSI ─── */
+  .section-urgency {
+    padding: 80px 0;
+    background: var(--red);
+    position: relative;
+    overflow: hidden;
+  }
+  .section-urgency::before {
+    content: 'LIMITED';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-display);
+    font-size: 200px;
+    color: rgba(0,0,0,0.1);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: 0.05em;
+  }
+  .urgency-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .urgency-text h2 {
+    font-family: var(--font-display);
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    margin-bottom: 16px;
+  }
+  .urgency-text p {
+    font-size: 17px;
+    opacity: 0.85;
+    max-width: 500px;
+  }
+  .countdown-box {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  .cd-unit {
+    background: rgba(0,0,0,0.3);
+    padding: 16px 20px;
+    text-align: center;
+    min-width: 76px;
+  }
+  .cd-num {
+    font-family: var(--font-display);
+    font-size: 48px;
+    line-height: 1;
+    display: block;
+    letter-spacing: 0.02em;
+  }
+  .cd-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+  .cd-sep {
+    font-family: var(--font-display);
+    font-size: 36px;
+    opacity: 0.5;
+    padding-bottom: 16px;
+  }
+  .stock-bar-wrap {
+    margin-top: 24px;
+    position: relative;
+    z-index: 1;
+  }
+  .stock-bar-label {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+    opacity: 0.85;
+  }
+  .stock-bar {
+    height: 6px;
+    background: rgba(0,0,0,0.25);
+    border-radius: 0;
+    overflow: hidden;
+  }
+  .stock-bar-fill {
+    height: 100%;
+    background: var(--white);
+    width: 72%;
+    border-radius: 0;
+    animation: fillbar 1.5s ease forwards;
+  }
+  @keyframes fillbar { from { width: 0; } to { width: 72%; } }
+
+  /* ─── BONUS ─── */
+  .section-bonus {
+    padding: 100px 0;
+    background: #0f0f0f;
+  }
+  .bonus-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .bonus-headline {
+    font-family: var(--font-display);
+    font-size: clamp(44px, 5.5vw, 70px);
+    line-height: 0.93;
+    letter-spacing: 0.02em;
+    margin-bottom: 20px;
+  }
+  .bonus-headline span { color: var(--accent); }
+  .bonus-subtext { color: var(--gray-light); font-size: 16px; line-height: 1.7; }
+  .bonus-cards { display: flex; flex-direction: column; gap: 16px; }
+  .bonus-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 20px;
+    align-items: center;
+    padding: 24px;
+    border: 1px solid var(--gray-mid);
+    background: var(--black);
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .bonus-card:hover { border-color: var(--accent); transform: translateX(6px); }
+  .bonus-tag-label {
+    background: var(--accent);
+    color: var(--black);
+    font-family: var(--font-display);
+    font-size: 13px;
+    padding: 8px 12px;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+    text-align: center;
+    min-width: 72px;
+  }
+  .bonus-card-title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    letter-spacing: 0.04em;
+    margin-bottom: 4px;
+  }
+  .bonus-card-desc { font-size: 13px; color: var(--gray-light); }
+
+  /* ─── CTA UTAMA ─── */
+  .section-cta {
+    padding: 100px 0;
+    background: var(--black);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .section-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 59px,
+        rgba(255,255,255,0.015) 59px,
+        rgba(255,255,255,0.015) 60px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 59px,
+        rgba(255,255,255,0.015) 59px,
+        rgba(255,255,255,0.015) 60px
+      );
+    pointer-events: none;
+  }
+  .cta-inner { position: relative; z-index: 1; }
+  .cta-pre {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 24px;
+  }
+  .cta-headline {
+    font-family: var(--font-display);
+    font-size: clamp(52px, 7vw, 96px);
+    line-height: 0.93;
+    letter-spacing: 0.02em;
+    margin-bottom: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta-sub {
+    font-size: 18px;
+    color: var(--gray-light);
+    margin-bottom: 48px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta-price-box {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 40px;
+    padding: 24px 40px;
+    border: 1px solid var(--gray-mid);
+    background: var(--gray);
+  }
+  .price-old {
+    font-family: var(--font-mono);
+    font-size: 18px;
+    text-decoration: line-through;
+    color: var(--gray-light);
+  }
+  .price-new {
+    font-family: var(--font-display);
+    font-size: 56px;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .price-save {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    background: var(--red);
+    padding: 4px 10px;
+    color: var(--white);
+  }
+  .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px; }
+  .btn-big {
+    background: var(--red);
+    color: var(--white);
+    padding: 20px 52px;
+    font-family: var(--font-display);
+    font-size: 26px;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    transition: all 0.25s;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-big::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--white);
+    transform: translateX(-101%);
+    transition: transform 0.25s;
+  }
+  .btn-big:hover::after { transform: translateX(0); }
+  .btn-big:hover { color: var(--red); }
+  .btn-big span { position: relative; z-index: 1; }
+  .cta-note {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--gray-light);
+  }
+
+  /* ─── GARANSI ─── */
+  .section-garansi {
+    padding: 80px 0;
+    background: var(--gray);
+    border-top: 1px solid var(--gray-mid);
+    border-bottom: 1px solid var(--gray-mid);
+  }
+  .garansi-inner {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 48px;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .garansi-badge {
+    width: 140px;
+    height: 140px;
+    border: 3px solid var(--accent);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-shrink: 0;
+    padding: 16px;
+    position: relative;
+  }
+  .garansi-badge::after {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border: 1px solid rgba(212,168,67,0.3);
+    border-radius: 50%;
+  }
+  .garansi-badge-num {
+    font-family: var(--font-display);
+    font-size: 44px;
+    color: var(--accent);
+    line-height: 1;
+    display: block;
+  }
+  .garansi-badge-text {
+    font-family: var(--font-mono);
+    font-size: 8px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .garansi-content h3 {
+    font-family: var(--font-display);
+    font-size: 36px;
+    letter-spacing: 0.04em;
+    margin-bottom: 12px;
+  }
+  .garansi-content p {
+    color: var(--gray-light);
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  /* ─── NB ─── */
+  .section-nb {
+    padding: 60px 0;
+    background: var(--black);
+    border-top: 1px solid var(--gray-mid);
+  }
+  .nb-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .nb-title {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .nb-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--gray-mid);
+  }
+  .nb-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .nb-list li {
+    padding: 16px 20px;
+    background: var(--gray);
+    border-left: 2px solid var(--gray-mid);
+    font-size: 14px;
+    color: #999;
+    line-height: 1.6;
+    display: flex;
+    gap: 12px;
+  }
+  .nb-list li::before {
+    content: attr(data-n);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--red);
+    padding-top: 2px;
+    min-width: 20px;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--gray);
+    border-top: 1px solid var(--gray-mid);
+    padding: 40px 0;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: 32px;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+  }
+  .footer-logo span { color: var(--red); }
+  .footer-tagline {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray-light);
+    margin-bottom: 24px;
+  }
+  .footer-links { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+  .footer-links a {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--gray-light);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--red); }
+  .footer-copy { font-size: 12px; color: #444; }
+
+  /* ─── SCROLL ANIMATIONS ─── */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  [data-reveal].visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  [data-reveal-delay="1"] { transition-delay: 0.1s; }
+  [data-reveal-delay="2"] { transition-delay: 0.2s; }
+  [data-reveal-delay="3"] { transition-delay: 0.3s; }
+  [data-reveal-delay="4"] { transition-delay: 0.4s; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 60px 0 40px;
+  }
+  .hero-visual {
+    display: block;
+    margin-top: 20px;
+  }
+  .hero-img-box {
+    max-width: 100%;
+    height: auto;
+  }
+  .opening-grid {
+    grid-template-columns: 1fr;
+  }
+  .benefit-grid {
+    grid-template-columns: 1fr;
+  }
+  .why-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .why-visual-stack {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .why-img-main {
+    width: 100%;
+    height: auto;
+    aspect-ratio: auto;
+  }
+  .why-img-main img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+  .why-img-thumb {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    margin: 15px auto 0;
+    width: 140px;
+  }
+  .why-reason {
+    grid-template-columns: 30px 1fr;
+    gap: 12px;
+  }
+  .why-reason-title {
+    font-size: 18px;
+  }
+  .urgency-inner {
+    grid-template-columns: 1fr;
+  }
+  .countdown-box {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+  .bonus-wrap {
+    grid-template-columns: 1fr;
+  }
+  .garansi-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .garansi-badge {
+    margin: 0 auto;
+  }
+  .testi-card {
+    flex: 0 0 calc(85% - 12px);
+  }
+  .container {
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-stats {
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .cta-price-box {
+    flex-direction: column;
+    align-items: center;
+  }
+  .btn-big {
+    font-size: 20px;
+    padding: 18px 36px;
+  }
+  .section-urgency::before {
+    font-size: 100px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <span class="topbar-scroll">
+    GRATIS ONGKIR UNTUK PEMBELIAN PERTAMA &nbsp;&nbsp;|&nbsp;&nbsp; BAHAN PREMIUM 100% COTTON COMBED &nbsp;&nbsp;|&nbsp;&nbsp; GARANSI PRODUK 7 HARI &nbsp;&nbsp;|&nbsp;&nbsp; STOK TERBATAS — PESAN SEKARANG &nbsp;&nbsp;|&nbsp;&nbsp; GRATIS ONGKIR UNTUK PEMBELIAN PERTAMA &nbsp;&nbsp;|&nbsp;&nbsp; BAHAN PREMIUM 100% COTTON COMBED &nbsp;&nbsp;|&nbsp;&nbsp;
+  </span>
+</div>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">STRONG<span>WEAR</span></a>
+    <a href="#order" class="nav-cta">PESAN SEKARANG</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container" style="grid-column:1/-1; display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;">
+    <div class="hero-content" data-reveal>
+      <p class="hero-eyebrow">// koleksi pria — edisi terbatas</p>
+      <h1 class="hero-headline">
+        TAMPIL
+        <span class="line-accent">PERCAYA</span>
+        DIRI
+      </h1>
+      <p class="hero-sub">
+        Kaos dan baju pria dengan <strong>bahan premium</strong>, potongan maskulin tegas, dan desain yang tidak akan ketinggalan zaman. Dibuat untuk pria yang tahu standarnya.
+      </p>
+      <div class="hero-cta-group">
+        <a href="#order" class="btn-primary"><span>LIHAT KOLEKSI</span></a>
+        <a href="#kenapa" class="btn-ghost">Kenapa Kami</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item" data-reveal data-reveal-delay="1">
+          <div class="stat-num">2.800+</div>
+          <div class="stat-label">Pembeli Puas</div>
+        </div>
+        <div class="stat-item" data-reveal data-reveal-delay="2">
+          <div class="stat-num">4.9</div>
+          <div class="stat-label">Rating Rata-Rata</div>
+        </div>
+        <div class="stat-item" data-reveal data-reveal-delay="3">
+          <div class="stat-num">3 Thn</div>
+          <div class="stat-label">Berdiri & Dipercaya</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual" data-reveal data-reveal-delay="2">
+      <div class="hero-img-box">
+        <div class="img-placeholder">
+          <div class="img-placeholder-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <img src="https://i.pinimg.com/1200x/6f/e3/26/6fe326e03cb1fe1c3d659f32de71043b.jpg">
+        </div>
+      </div>
+      <div class="hero-badge">
+        BEST<br>SELLER
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPENING / MASALAH -->
+<section class="section-opening">
+  <div class="container">
+    <div class="opening-grid">
+      <div class="opening-left" data-reveal>
+        <span class="tag">Kita Bicara Jujur</span>
+        <h2>
+          Kaos biasa saja
+          <em>tidak cukup lagi</em>
+        </h2>
+        <p>Pria modern butuh pakaian yang berbicara sebelum dia membuka mulut. Bukan kaos tipis yang melar, bukan desain norak yang bikin minder, dan bukan bahan yang langsung rusak setelah beberapa kali cuci.</p>
+      </div>
+      <ul class="pain-list" data-reveal data-reveal-delay="2">
+        <li>
+          <div class="pain-num">01</div>
+          <div class="pain-text">
+            <strong>Bahan Tipis dan Mudah Melar</strong>
+            Kaos yang Anda beli cepat kehilangan bentuk dan terasa murah saat dipakai.
+          </div>
+        </li>
+        <li>
+          <div class="pain-num">02</div>
+          <div class="pain-text">
+            <strong>Desain Pasaran, Tidak Ada Karakter</strong>
+            Memakai baju yang sama dengan ribuan orang lain — tidak ada identitas, tidak berkesan.
+          </div>
+        </li>
+        <li>
+          <div class="pain-num">03</div>
+          <div class="pain-text">
+            <strong>Ukuran Tidak Konsisten</strong>
+            Susah menemukan potongan yang pas di badan — terlalu besar atau terlalu kecil.
+          </div>
+        </li>
+        <li>
+          <div class="pain-num">04</div>
+          <div class="pain-text">
+            <strong>Harga Mahal, Kualitas Mengecewakan</strong>
+            Sudah bayar lebih tapi hasilnya tidak sebanding dengan ekspektasi.
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFIT -->
+<section class="section-benefit">
+  <div class="container">
+    <div class="section-header" data-reveal>
+      <span class="tag">Yang Kami Tawarkan</span>
+      <h2>BEDA DARI YANG LAIN</h2>
+      <p>Setiap detail dirancang khusus untuk pria yang tidak mau kompromi soal kualitas.</p>
+    </div>
+    <div class="benefit-grid">
+      <div class="benefit-card" data-reveal>
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="benefit-title">BAHAN PREMIUM</div>
+        <p class="benefit-desc">Cotton combed 30s dengan gramasi 180-220 gsm. Tebal, lembut, tidak mudah melar, dan tahan ratusan kali cuci tanpa kehilangan bentuk.</p>
+      </div>
+      <div class="benefit-card" data-reveal data-reveal-delay="1">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="benefit-title">POTONGAN MASKULIN</div>
+        <p class="benefit-desc">Pola dirancang khusus untuk tubuh pria Asia — slim fit yang nyaman, tidak terlalu ketat dan tidak terlalu longgar. Membentuk postur dengan baik.</p>
+      </div>
+      <div class="benefit-card" data-reveal data-reveal-delay="2">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="benefit-title">DESAIN EKSKLUSIF</div>
+        <p class="benefit-desc">Setiap desain dibuat dalam jumlah terbatas. Anda tidak akan menemukan orang lain memakai kaos yang sama di acara yang sama.</p>
+      </div>
+      <div class="benefit-card" data-reveal>
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="benefit-title">SABLON TAHAN LAMA</div>
+        <p class="benefit-desc">Menggunakan teknik DTF dan discharge printing — warna tetap cerah, tidak retak, dan tidak memudar meski dicuci berkali-kali.</p>
+      </div>
+      <div class="benefit-card" data-reveal data-reveal-delay="1">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="benefit-title">PENGIRIMAN CEPAT</div>
+        <p class="benefit-desc">Proses packing dalam 1x24 jam hari kerja. Tersedia pilihan pengiriman same day dan next day untuk wilayah tertentu.</p>
+      </div>
+      <div class="benefit-card" data-reveal data-reveal-delay="2">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="benefit-title">GARANSI PRODUK</div>
+        <p class="benefit-desc">Tidak puas dalam 7 hari pertama? Kami kembalikan uang Anda sepenuhnya tanpa pertanyaan yang menyulitkan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALASAN / WHY US -->
+<section class="section-why" id="kenapa">
+  <div class="container">
+    <div class="why-layout">
+      <div class="why-visual-stack" data-reveal>
+        <div class="why-img-main">
+          <div class="img-placeholder" style="color:#999;">
+            <div class="img-placeholder-icon" style="border-color:#ccc;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            </div>
+            <img src="https://i.pinimg.com/736x/d1/1c/69/d11c69c8bb7d156e975cc7a7ee5b4141.jpg" style="width: 450pt;">
+          </div>
+        </div>
+        <div class="why-img-thumb">
+          <span class="why-img-thumb-num">3+</span>
+          <span class="why-img-thumb-label">Tahun Pengalaman</span>
+        </div>
+      </div>
+      <div data-reveal data-reveal-delay="1">
+        <span class="tag">Kenapa Pilih Kami</span>
+        <div class="section-header">
+          <h2>STANDAR KAMI TIDAK AKAN TURUN</h2>
+          <p>Kami bukan brand yang terburu-buru produksi massal. Setiap produk melewati QC ketat sebelum sampai ke tangan Anda.</p>
+        </div>
+        <div class="why-reasons">
+          <div class="why-reason open" onclick="toggleReason(this)">
+            <span class="why-reason-num">01</span>
+            <div class="why-reason-body">
+              <div class="why-reason-title">QC Ketat Sebelum Kirim <span class="why-reason-arrow">&#9654;</span></div>
+              <p class="why-reason-desc">Setiap produk diperiksa secara manual oleh tim kami — jahitan, sablon, dan ukuran — sebelum dikemas dan dikirimkan. Produk cacat tidak akan pernah lolos ke tangan Anda.</p>
+            </div>
+          </div>
+          <div class="why-reason" onclick="toggleReason(this)">
+            <span class="why-reason-num">02</span>
+            <div class="why-reason-body">
+              <div class="why-reason-title">Supplier Bahan Terverifikasi <span class="why-reason-arrow">&#9654;</span></div>
+              <p class="why-reason-desc">Kami hanya bekerja sama dengan supplier bahan yang sudah teruji konsistensi kualitasnya selama bertahun-tahun. Tidak ada kompromi soal bahan baku.</p>
+            </div>
+          </div>
+          <div class="why-reason" onclick="toggleReason(this)">
+            <span class="why-reason-num">03</span>
+            <div class="why-reason-body">
+              <div class="why-reason-title">Ukuran Akurat dan Konsisten <span class="why-reason-arrow">&#9654;</span></div>
+              <p class="why-reason-desc">Size chart kami dibuat berdasarkan data ribuan pembeli. Kami update secara berkala agar ukuran yang Anda pilih benar-benar sesuai harapan.</p>
+            </div>
+          </div>
+          <div class="why-reason" onclick="toggleReason(this)">
+            <span class="why-reason-num">04</span>
+            <div class="why-reason-body">
+              <div class="why-reason-title">Responsif dan Transparan <span class="why-reason-arrow">&#9654;</span></div>
+              <p class="why-reason-desc">CS kami aktif dan siap membantu setiap hari. Tidak ada pertanyaan yang dibiarkan menggantung lebih dari 2 jam pada jam operasional.</p>
+            </div>
+          </div>
+          <div class="why-reason" onclick="toggleReason(this)">
+            <span class="why-reason-num">05</span>
+            <div class="why-reason-body">
+              <div class="why-reason-title">Harga Jujur Tanpa Inflasi Merk <span class="why-reason-arrow">&#9654;</span></div>
+              <p class="why-reason-desc">Anda membayar untuk kualitas nyata, bukan nama besar. Kami percaya produk bagus tidak perlu dijual dengan harga yang tidak masuk akal.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONI -->
+<section class="section-testi">
+  <div class="container">
+    <div class="testi-header" data-reveal>
+      <div>
+        <span class="tag">Kata Mereka</span>
+        <h2 style="font-family:var(--font-display); font-size: clamp(44px,5.5vw,68px); line-height:0.93; letter-spacing:0.02em;">APA KATA<br>PEMBELI KAMI</h2>
+      </div>
+      <div class="testi-nav">
+        <button class="testi-btn" onclick="slideTesti(-1)">&#8592;</button>
+        <button class="testi-btn" onclick="slideTesti(1)">&#8594;</button>
+      </div>
+    </div>
+    <div class="testi-track-wrap">
+      <div class="testi-track" id="testiTrack">
+        <div class="testi-card">
+          <span class="testi-stars">* * * * *</span>
+          <span class="testi-quote-mark">"</span>
+          <p class="testi-text">Sudah coba banyak brand kaos lokal, ini yang pertama kali saya merasa bayar sesuai kualitas. Bahan tebal, sablon tidak retak setelah dicuci belasan kali. Ukuran M pas banget di badan saya.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">R</div>
+            <div>
+              <span class="testi-name">REZA MAHENDRA</span>
+              <span class="testi-loc">Jakarta Selatan</span>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <span class="testi-stars">* * * * *</span>
+          <span class="testi-quote-mark">"</span>
+          <p class="testi-text">Ordered 3 kaos sekaligus karena promo bundling. Packaging rapi, ada note personal, barang sampai 2 hari. Yang paling suka adalah desainnya tidak pasaran — dapat banyak pujian dari teman.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">A</div>
+            <div>
+              <span class="testi-name">ALDI FIRMANSYAH</span>
+              <span class="testi-loc">Bandung</span>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <span class="testi-stars">* * * * *</span>
+          <span class="testi-quote-mark">"</span>
+          <p class="testi-text">Tadinya ragu order karena belum kenal brand ini. Tapi setelah coba, langsung repeat order. Kaosnya masih bagus sampai sekarang padahal sudah hampir setahun. Rekomended banget!</p>
+          <div class="testi-author">
+            <div class="testi-avatar">D</div>
+            <div>
+              <span class="testi-name">DIMAS PRATAMA</span>
+              <span class="testi-loc">Surabaya</span>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <span class="testi-stars">* * * * *</span>
+          <span class="testi-quote-mark">"</span>
+          <p class="testi-text">CS-nya ramah dan cepat balas. Ada kesalahan ukuran dari sisi saya, mereka bantu prosedur tukar dengan mudah. Pengalaman belanja yang menyenangkan dari awal sampai akhir.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">F</div>
+            <div>
+              <span class="testi-name">FAJAR NUGROHO</span>
+              <span class="testi-loc">Yogyakarta</span>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <span class="testi-stars">* * * * *</span>
+          <span class="testi-quote-mark">"</span>
+          <p class="testi-text">Belinya buat hadiah ulang tahun pacar. Dia senang banget, katanya bahan kaosnya serasa mahal padahal harganya terjangkau. Pasti balik lagi beli koleksi berikutnya.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">B</div>
+            <div>
+              <span class="testi-name">BAGAS WICAKSONO</span>
+              <span class="testi-loc">Semarang</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- URGENSI -->
+<section class="section-urgency">
+  <div class="container">
+    <div class="urgency-inner">
+      <div class="urgency-text" data-reveal>
+        <h2>PENAWARAN INI TIDAK AKAN BERTAHAN LAMA</h2>
+        <p>Diskon khusus dan bonus eksklusif hanya tersedia untuk batch produksi ini. Begitu stok habis, harga kembali normal dan bonus dicabut.</p>
+      </div>
+      <div class="countdown-box" data-reveal data-reveal-delay="2">
+        <div class="cd-unit">
+          <span class="cd-num" id="cdH">23</span>
+          <span class="cd-label">Jam</span>
+        </div>
+        <span class="cd-sep">:</span>
+        <div class="cd-unit">
+          <span class="cd-num" id="cdM">47</span>
+          <span class="cd-label">Menit</span>
+        </div>
+        <span class="cd-sep">:</span>
+        <div class="cd-unit">
+          <span class="cd-num" id="cdS">00</span>
+          <span class="cd-label">Detik</span>
+        </div>
+      </div>
+    </div>
+    <div class="stock-bar-wrap" data-reveal>
+      <div class="stock-bar-label">
+        <span>STOK TERSISA</span>
+        <span>72% TERJUAL — Hanya tersisa 28 pcs</span>
+      </div>
+      <div class="stock-bar">
+        <div class="stock-bar-fill"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BONUS -->
+<section class="section-bonus">
+  <div class="container">
+    <div class="bonus-wrap">
+      <div data-reveal>
+        <span class="tag">Bonus Eksklusif</span>
+        <h2 class="bonus-headline">DAPAT LEBIH DARI <span>YANG ANDA BAYAR</span></h2>
+        <p class="bonus-subtext">Khusus untuk pembelian dalam periode ini, Anda mendapatkan beberapa bonus yang tidak akan kami tawarkan lagi setelahnya.</p>
+      </div>
+      <div class="bonus-cards" data-reveal data-reveal-delay="2">
+        <div class="bonus-card">
+          <div class="bonus-tag-label">BONUS<br>1</div>
+          <div>
+            <div class="bonus-card-title">GRATIS ONGKIR KE SELURUH INDONESIA</div>
+            <p class="bonus-card-desc">Tidak perlu bayar biaya pengiriman, berlaku untuk semua wilayah tanpa minimum pembelian tambahan.</p>
+          </div>
+        </div>
+        <div class="bonus-card">
+          <div class="bonus-tag-label">BONUS<br>2</div>
+          <div>
+            <div class="bonus-card-title">EKSTRA KAOS DALAM BUNDLE</div>
+            <p class="bonus-card-desc">Beli 2 kaos, dapatkan 1 kaos pilihan kami senilai hingga Rp 120.000 secara gratis — stok terbatas.</p>
+          </div>
+        </div>
+        <div class="bonus-card">
+          <div class="bonus-tag-label">BONUS<br>3</div>
+          <div>
+            <div class="bonus-card-title">AKSES MEMBER PRIORITAS</div>
+            <p class="bonus-card-desc">Dapat notifikasi lebih awal untuk setiap koleksi baru dan penawaran khusus sebelum publik mengetahuinya.</p>
+          </div>
+        </div>
+        <div class="bonus-card">
+          <div class="bonus-tag-label">BONUS<br>4</div>
+          <div>
+            <div class="bonus-card-title">PACKAGING PREMIUM</div>
+            <p class="bonus-card-desc">Dikemas dalam box eksklusif dengan tissue paper dan stiker branded — siap dijadikan hadiah tanpa perlu wrapping tambahan.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA UTAMA -->
+<section class="section-cta" id="order">
+  <div class="container">
+    <div class="cta-inner" data-reveal>
+      <p class="cta-pre">// Ambil Keputusan Terbaik Hari Ini</p>
+      <h2 class="cta-headline">JANGAN BIARKAN KESEMPATAN INI LEWAT</h2>
+      <p class="cta-sub">Ribuan pria sudah merasakan perbedaannya. Giliran Anda merasakannya sendiri.</p>
+      <div class="cta-price-box">
+        <span class="price-old">Rp 259.000</span>
+        <span class="price-new">Rp 169.000</span>
+        <span class="price-save">HEMAT 35%</span>
+      </div>
+      <div class="cta-buttons">
+        <a href="#" class="btn-big"><span>PESAN SEKARANG</span></a>
+      </div>
+      <p class="cta-note">GRATIS ONGKIR + BONUS 4 ITEM + GARANSI 7 HARI — BERLAKU HARI INI SAJA</p>
+    </div>
+  </div>
+</section>
+
+<!-- GARANSI -->
+<section class="section-garansi">
+  <div class="container">
+    <div class="garansi-inner" data-reveal>
+      <div class="garansi-badge">
+        <span class="garansi-badge-num">7</span>
+        <span class="garansi-badge-text">Hari Garansi Uang Kembali</span>
+      </div>
+      <div class="garansi-content">
+        <h3>GARANSI TANPA DRAMA</h3>
+        <p>Kami begitu yakin dengan kualitas produk kami sehingga kami memberikan garansi uang kembali penuh selama 7 hari. Jika karena alasan apapun Anda tidak puas — bahan, jahitan, ukuran, atau kondisi produk saat diterima — hubungi kami dan kami proses pengembalian dana tanpa pertanyaan yang mempersulit. Risiko sepenuhnya ada di pihak kami, bukan Anda.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NB -->
+<section class="section-nb">
+  <div class="container">
+    <div class="nb-inner" data-reveal>
+      <div class="nb-title">Catatan Penting</div>
+      <ul class="nb-list">
+        <li data-n="*">Penawaran harga khusus dan bonus gratis hanya berlaku selama stok periode ini masih tersedia. Ketika stok habis, harga otomatis kembali ke harga normal.</li>
+        <li data-n="*">Garansi 7 hari berlaku untuk kondisi produk yang cacat dari pabrik atau ketidaksesuaian ukuran lebih dari 2 cm dari size chart yang tertera. Produk yang sudah dicuci atau diubah tidak termasuk dalam garansi.</li>
+        <li data-n="*">Estimasi pengiriman 2-5 hari kerja tergantung lokasi. Pengiriman ke daerah terpencil mungkin memerlukan waktu lebih lama dari yang tertera.</li>
+        <li data-n="*">Bonus kaos gratis dalam bundle dikirimkan bersamaan dengan pesanan utama. Pilihan motif dan warna bonus ditentukan oleh tim kami berdasarkan ketersediaan stok.</li>
+        <li data-n="*">Untuk konfirmasi pesanan dan pertanyaan, hubungi CS kami melalui WhatsApp yang tertera di halaman kontak. Jam operasional Senin-Sabtu pukul 08.00-20.00 WIB.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">STRONG<span>WEAR</span></div>
+  <div class="footer-tagline">Kaos dan Baju Pria Premium — Dibuat untuk Pria yang Tahu Standarnya</div>
+  <div class="footer-links">
+    <a href="#">Tentang Kami</a>
+    <a href="#">Koleksi</a>
+    <a href="#">Size Chart</a>
+    <a href="#">Kebijakan Retur</a>
+    <a href="#">Kontak</a>
+  </div>
+  <div class="footer-copy">2025 STRONGWEAR. Hak cipta dilindungi undang-undang.</div>
+</footer>
+
+<script>
+// ─── SCROLL REVEAL ───
+const revealEls = document.querySelectorAll('[data-reveal]');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.12 });
+revealEls.forEach(el => observer.observe(el));
+
+// ─── ACCORDION WHY REASONS ───
+function toggleReason(el) {
+  const isOpen = el.classList.contains('open');
+  document.querySelectorAll('.why-reason').forEach(r => r.classList.remove('open'));
+  if (!isOpen) el.classList.add('open');
+}
+
+// ─── TESTIMONIAL SLIDER ───
+let testiIndex = 0;
+const track = document.getElementById('testiTrack');
+function getVisible() {
+  return window.innerWidth <= 900 ? 1 : 3;
+}
+function slideTesti(dir) {
+  const cards = track.children.length;
+  const vis = getVisible();
+  const max = cards - vis;
+  testiIndex = Math.max(0, Math.min(testiIndex + dir, max));
+  const cardW = track.children[0].offsetWidth + 24;
+  track.style.transform = `translateX(-${testiIndex * cardW}px)`;
+}
+
+// ─── COUNTDOWN TIMER ───
+function initCountdown() {
+  const stored = localStorage.getItem('sw_cd_end');
+  let endTime;
+  if (stored) {
+    endTime = parseInt(stored);
+    if (endTime < Date.now()) {
+      endTime = Date.now() + 23 * 3600 * 1000 + 47 * 60 * 1000;
+      localStorage.setItem('sw_cd_end', endTime);
+    }
+  } else {
+    endTime = Date.now() + 23 * 3600 * 1000 + 47 * 60 * 1000;
+    localStorage.setItem('sw_cd_end', endTime);
+  }
+  function tick() {
+    const diff = Math.max(0, endTime - Date.now());
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cdH').textContent = String(h).padStart(2,'0');
+    document.getElementById('cdM').textContent = String(m).padStart(2,'0');
+    document.getElementById('cdS').textContent = String(s).padStart(2,'0');
+    if (diff > 0) setTimeout(tick, 1000);
+  }
+  tick();
+}
+initCountdown();
+</script>
+</body>
+</html>
